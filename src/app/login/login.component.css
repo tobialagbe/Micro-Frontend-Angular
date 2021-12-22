@@ -1,0 +1,34 @@
+.loginhero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.loginBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 600px;
+}
+
+.logo {
+  height: 150px;
+  width: 150px;
+  display: block;
+  margin: 0 auto;
+}
+
+.usn,
+.pwd {
+  margin-bottom: 15px;
+  /* width: 600px; */
+}
+
+.login-form-button {
+  display: block !important;
+  width: 100%;
+  background-color: orange;
+  border: none;
+}

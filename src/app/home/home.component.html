@@ -1,0 +1,55 @@
+<div class="bar errorBar" *ngIf="error">{{errorMsg}}</div>
+<div class="bar successBar" *ngIf="notif">{{notificationMsg}}</div>
+<nz-layout style="border: 1px solid rgb(228, 228, 228);">
+    <img src="./../../assets/transactions-logo.png" class="logo" alt="">
+    <nz-header style="color: white !important">
+        <div nz-row nzJustify="space-between" style="width: 100%;">
+            <div nz-col nzSpan="6" style="display: flex; align-items: center; justify-content: flex-start;">
+                <nz-breadcrumb >
+                    <nz-breadcrumb-item>FullStack App</nz-breadcrumb-item>
+                    <nz-breadcrumb-item>Home</nz-breadcrumb-item>
+                </nz-breadcrumb>
+            </div>
+
+            <div *ngIf="user" nz-col nzSpan="6" style="display: flex; justify-content: flex-end; align-items: center;">
+                {{user.firstName}}
+                <span class="avatar">{{getInitials()}}</span>
+            </div>
+        </div>
+    </nz-header>
+    <nz-content>
+        <div class="introText">
+            <h1>Transactions</h1>
+            <p>View and cancel transactions below</p>
+        </div>
+        <nz-spin nzSimple *ngIf="!transactions"></nz-spin> 
+        <nz-table #basicTable nzShowPagination [nzData]="transactions" *ngIf="transactions">
+            <thead>
+              <tr>
+                <th>Product Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Title</th>
+                <th>Shipping Option</th>
+                <th>Shipping Method</th>
+                <th>Cancel</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of basicTable.data">
+                <td>{{ data.product.productName }}</td>
+                <td>{{ data.product.shortDescription }}</td>
+                <td>{{ data.price }}</td>
+                <td>{{ data.product.title }}</td>
+                <td>{{ data.shippingOption }}</td>
+                <td>{{ data.shippingRateComputationMethodSystemName }}</td>
+                <td><button nz-button nzType="primary" nzDanger (click)="cancelTransaction(data)">cancel</button></td>
+              </tr>
+            </tbody>
+          </nz-table>
+
+    </nz-content>
+    <nz-footer>
+        <button nz-button nzType="primary" style="background-color: orange;" (click)="logout()">log out</button>
+    </nz-footer>
+</nz-layout>

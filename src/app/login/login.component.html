@@ -1,0 +1,23 @@
+<div class="bar errorBar" *ngIf="error">{{errorMsg}}</div>
+<div class="loginhero">
+    <div class="loginBox">
+        <nz-spin nzSimple *ngIf="loading"></nz-spin> 
+        <form [formGroup]="validateForm" (ngSubmit)="submitForm()" *ngIf="!loading">
+                 <img src="./../../assets/transactions-logo.png" class="logo" alt="">
+                 <h1 style="text-align: center;">Log In</h1>
+                <input class="usn" nz-input placeholder="Username" type="text" formControlName="username" />
+                <nz-input-group class="pwd" [nzSuffix]="suffixTemplate">
+                    <input
+                      [type]="passwordVisible ? 'text' : 'password'"
+                      nz-input
+                      placeholder="Password"
+                      formControlName="password"
+                    />
+                </nz-input-group>
+                <ng-template #suffixTemplate>
+                    <i nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'" (click)="passwordVisible = !passwordVisible"></i>
+                </ng-template>
+                <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Log in</button>
+        </form>
+    </div>
+</div>
