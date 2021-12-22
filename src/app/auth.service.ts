@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  baseUrl: string = `http://127.0.0.1:5000`;
+  baseUrl = `${environment.apiUrl}`;
 
   httpOptions = {
     headers: new HttpHeaders({
